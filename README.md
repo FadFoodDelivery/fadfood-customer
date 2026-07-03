@@ -1,32 +1,43 @@
-# React + TypeScript + Vite
+# 🍔 FadFood Delivery - Customer Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+![FadFood Delivery Banner](https://via.placeholder.com/1000x300/ff6b6b/ffffff?text=FadFood+Delivery+-+Kairouan)
 
-Currently, two official plugins are available:
+> المنصة الرسمية لعملاء شركة FadFood Delivery لخدمات التوصيل ونقل الطلبات في مدينة القيروان. 🛵
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![Live Preview](https://img.shields.io/badge/Live_Preview-View_Site-success?style=for-the-badge&logo=vercel)](https://fadfood-customer.vercel.app/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]()
+[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)]()
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)]()
 
-## React Compiler
+## 📖 عن المشروع
+تطبيق العميل هو جزء من منظومة FadFood المتكاملة. يتيح للمستخدمين تصفح قوائم أشهر المطاعم، اختيار الوجبات، وإضافتها إلى سلة المشتريات بكل سهولة وسلاسة، مع واجهة مستخدم عصرية ومحسنة للهواتف الذكية.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ المميزات الأساسية (Features)
+- 🍕 استعراض المطاعم: عرض ديناميكي لقوائم المطاعم المحلية وتفاصيلها.
+- 🛒 إدارة السلة: نظام سلس لإضافة الوجبات، تعديل الكميات، ومعرفة المجموع الإجمالي.
+- 📱 تصميم متجاوب: تجربة استخدام مثالية على جميع الأجهزة (موبايل، تابلت، ديسكتوب).
+- ⚡ أداء فائق: مبني باستخدام Vite لضمان سرعة التحميل والتنقل بين الصفحات.
 
-## Expanding the Oxlint configuration
+## 🛠️ التقنيات المستخدمة (Tech Stack)
+- Frontend Framework: React.js
+- Build Tool: Vite
+- Styling: Tailwind CSS
+- Routing: React Router v6
+- Deployment: Vercel
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## 🚀 كيفية تشغيل المشروع محلياً
+إذا كنت تريد تحميل المشروع والتعديل عليه على جهازك:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+# 1. تحميل المشروع
+git clone https://github.com/FadFoodDelivery/fadfood-customer.git
+
+# 2. الدخول لمجلد التطبيق
+cd fadfood-customer
+
+# 3. تثبيت التبعيات
+npm install
+
+# 4. تشغيل خادم التطوير
+npm run dev
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
