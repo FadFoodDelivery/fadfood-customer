@@ -1,0 +1,27 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; height: 100vh; overflow: hidden; }
+.hero {
+    height: 100vh;
+    background-image: url('../assets/images/Picsart_26-07-18_04-35-09-592.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.overlay {
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+}
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: #b3232f;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+}
