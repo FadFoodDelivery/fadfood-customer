@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - FadFood Kairouan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --dark-color: #2f3542;
+            --light-pink: #fceae8;
+            --grey-text: #747d8c;
+            --border-radius: 12px;
+            --big-border-radius: 30px;
+            --font-family: 'Tajawal', sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+        body {
+            background-color: var(--light-pink);
+            color: var(--dark-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .login-header h1 {
+            color: var(--primary-color);
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        .login-header p {
+            color: var(--grey-text);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+        }
+        .input-field {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: var(--big-border-radius);
+            border: 1px solid #e9ecef;
+            background-color: #f8f9fa;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-field:focus {
+            border-color: var(--primary-color);
+            background-color: #fff;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--big-border-radius);
+            font-size: 17px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+            margin-top: 10px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #e84118;
+        }
+        .back-link {
+            color: var(--grey-text);
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="شعار FadFood">
+        </div>
+        <div class="login-header">
+            <h1>تسجيل الدخول</h1>
+            <p>أدخل رقم هاتفك للمتابعة وطلب وجبتك المفضلة</p>
+        </div>
+        <form action="index.html" method="GET" style="width: 100%;">
+            <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" class="input-field" placeholder="مثال: 55073503 أو 28011748" required>
+            </div>
+            <button type="submit" class="btn-submit">دخول</button>
+        </form>
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+    </div>
+</body>
+</html>
