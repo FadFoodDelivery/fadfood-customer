@@ -129,6 +129,52 @@
             color: var(--grey-text);
             margin-bottom: 15px;
         }
+        .social-login-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            margin-top: 15px;
+        }
+        .social-login-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid #e9ecef;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .social-login-btn.fb { color: #1877f2; }
+        .social-login-btn.ig { color: #e1306c; }
+        .social-login-btn.wa { color: #25d366; }
+        .social-login-btn:hover {
+            background-color: #f1f2f6;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--grey-text);
+            font-size: 13px;
+            margin: 20px 0;
+            width: 100%;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .divider::before { margin-left: 10px; }
+        .divider::after { margin-right: 10px; }
     </style>
 </head>
 <body>
@@ -137,17 +183,26 @@
             <img src="images/logo.png" alt="شعار FadFood">
         </div>
 
-        <!-- خطوة إدخال رقم الهاتف -->
+        <!-- خطوة إدخال رقم الهاتف أو الربط الاجتماعي -->
         <div id="phone-step" style="width: 100%;">
             <div class="login-header">
                 <h1>تسجيل الدخول</h1>
-                <p>أدخل رقم هاتفك لتأكيد حسابك وتجنب الطلبات المزيفة</p>
+                <p>أدخل رقم هاتفاك أو اربط حسابك لتأكيد هويتك وتجنب الطلبات المزيفة</p>
             </div>
+            
             <div class="form-group">
                 <label for="phone">رقم الهاتف</label>
                 <input type="tel" id="phone" class="input-field" placeholder="مثال: 55073503" dir="ltr" required>
             </div>
             <button type="button" class="btn-submit" onclick="sendOtpCode()">إرسال رمز التأكيد</button>
+
+            <div class="divider">أو ربط الحساب عبر مواقع التواصل</div>
+
+            <div class="social-login-grid">
+                <a href="#" onclick="socialLogin('Facebook')" class="social-login-btn fb"><i class="fab fa-facebook-f"></i> فايسبوك</a>
+                <a href="#" onclick="socialLogin('Instagram')" class="social-login-btn ig"><i class="fab fa-instagram"></i> انستغرام</a>
+                <a href="#" onclick="socialLogin('WhatsApp')" class="social-login-btn wa"><i class="fab fa-whatsapp"></i> واتساب</a>
+            </div>
         </div>
 
         <!-- خطوة إدخال رمز التحقق OTP -->
@@ -164,7 +219,7 @@
             <button type="button" class="btn-submit" onclick="verifyOtpCode()">تأكيد الحساب والدخول</button>
         </div>
 
-        <a href="index.html" class="back-link" style="margin-top: 15px;"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+        <a href="index.html" class="back-link" style="margin-top: 20px;"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
     </div>
 
     <script>
@@ -176,11 +231,9 @@
                 alert('الرجاء إدخال رقم هاتف صحيح');
                 return;
             }
-            // توليد رمز تحقق عشوائي من 4 أرقام
             correctOtp = Math.floor(1000 + Math.random() * 9000).toString();
             document.getElementById('generated-code').innerText = correctOtp;
             
-            // إخفاء مرحلة الهاتف وإظهار مرحلة الكود
             document.getElementById('phone-step').style.display = 'none';
             document.getElementById('otp-step').style.display = 'block';
             alert('تم محاكاة إرسال رسالة نصية SMS برمز التأكيد رقم: ' + correctOtp);
@@ -189,11 +242,16 @@
         function verifyOtpCode() {
             const enteredOtp = document.getElementById('otp-code').value.trim();
             if(enteredOtp === correctOtp) {
-                alert('تم تأكيد الحساب بنجاح!');
+                alert('تم تأكيد الحساب والدخول بنجاح!');
                 window.location.href = 'index.html';
             } else {
                 alert('رمز التحقق غير صحيح، حاول مرة أخرى');
             }
+        }
+
+        function socialLogin(provider) {
+            alert('تم ربط حسابك بنجاح عبر ' + provider + ' وتأكيد الهوية!');
+            window.location.href = 'index.html';
         }
     </script>
 </body>
