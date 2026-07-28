@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Tajawal', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#FFF5F5] min-h-screen p-4 flex justify-center items-center">
+
+  <div class="bg-white w-full max-w-sm rounded-[35px] p-5 shadow-xl border border-gray-100 text-center relative my-2">
+    
+    <!-- Top Verified Badge Header -->
+    <div class="flex justify-center items-center gap-1.5 mb-3">
+      <span class="bg-emerald-100 text-emerald-600 rounded-full w-6 h-6 flex items-center justify-center text-xs"><i class="fas fa-check"></i></span>
+      <span class="font-black text-gray-800 text-base tracking-wide">FadFood</span>
+    </div>
+
+    <!-- Main StopWatch Icon Header -->
+    <div class="flex justify-center mb-2">
+      <div class="w-14 h-14 bg-[#FF3B4E] rounded-full flex items-center justify-center text-white text-xl shadow-lg border-2 border-white">
+        <i class="fas fa-stopwatch"></i>
+      </div>
+    </div>
+
+    <!-- Title & Subtitle -->
+    <h1 class="text-xl font-black text-gray-900 mb-1">ما الذي تحتاج لإنجازه اليوم؟</h1>
+    <p class="text-xs text-gray-400 mb-4 font-medium">اختر الخدمة المناسبة وسنقوم بتلبيتها فوراً</p>
+
+    <!-- Services Options Container -->
+    <div class="space-y-3 text-right">
+      
+      <!-- Option 1: Food Delivery -->
+      <div onclick="selectService(this, 'food')" 
+           class="service-card cursor-pointer border-2 border-gray-100 rounded-2xl p-3 flex items-center gap-3 transition-all duration-200">
+        <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-xl shrink-0">
+          🍕
+        </div>
+        <div class="flex-grow">
+          <h3 class="font-black text-sm text-gray-900">توصيل المأكولات</h3>
+          <p class="text-[11px] text-gray-400 font-medium">من أفضل المطاعم والمقاهي في منطقتك</p>
+        </div>
+        <div class="radio-icon w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 transition-all">
+          <div class="dot w-2 h-2 rounded-full bg-white hidden"></div>
+        </div>
+      </div>
+
+      <!-- Option 2: Errands & Delivery -->
+      <div onclick="selectService(this, 'errands')" 
+           class="service-card cursor-pointer border-2 border-gray-100 rounded-2xl p-3 flex items-center gap-3 transition-all duration-200">
+        <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-xl shrink-0">
+          📦
+        </div>
+        <div class="flex-grow">
+          <h3 class="font-black text-sm text-gray-900">إنجاز مهمات</h3>
+          <p class="text-[11px] text-gray-400 font-medium">نقل أغراض، شراء من الصيدلية، أو المكتبة</p>
+        </div>
+        <div class="radio-icon w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 transition-all">
+          <div class="dot w-2 h-2 rounded-full bg-white hidden"></div>
+        </div>
+      </div>
+
+      <!-- Option 3: Grocery -->
+      <div onclick="selectService(this, 'grocery')" 
+           class="service-card cursor-pointer border-2 border-gray-100 rounded-2xl p-3 flex items-center gap-3 transition-all duration-200">
+        <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-xl shrink-0">
+          🛒
+        </div>
+        <div class="flex-grow">
+          <h3 class="font-black text-sm text-gray-900">تسوق المقاضي</h3>
+          <p class="text-[11px] text-gray-400 font-medium">مستلزمات المنزل والخضروات اليومية</p>
+        </div>
+        <div class="radio-icon w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 transition-all">
+          <div class="dot w-2 h-2 rounded-full bg-white hidden"></div>
+        </div>
+      </div>
+
+      <!-- Option 4: Custom / Mixed Request -->
+      <div onclick="selectService(this, 'custom')" 
+           class="service-card cursor-pointer border-2 border-gray-100 rounded-2xl p-3 flex flex-col gap-2 transition-all duration-200">
+        <div class="flex items-center gap-3 w-full">
+          <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-xl shrink-0">
+            📝
+          </div>
+          <div class="flex-grow">
+            <h3 class="font-black text-sm text-gray-900">طلبات مختلطة ومخصصة</h3>
+            <p class="text-[11px] text-gray-400 font-medium">صف طلبك وسنلبي جميع احتياجاتك برحلة واحدة</p>
+          </div>
+          <div class="radio-icon w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 transition-all">
+            <div class="dot w-2 h-2 rounded-full bg-white hidden"></div>
+          </div>
+        </div>
+
+        <!-- حقل النص يظهر عند اختيار المخصص -->
+        <div id="customInputContainer" class="hidden mt-2 w-full text-right">
+          <textarea id="customNotes" rows="2" 
+                    placeholder="صف ما تريد هنا (مثال: وجبة برجر مع طرد من المكتبة)..." 
+                    class="w-full p-2.5 text-xs bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#FF3B4E] focus:bg-white text-gray-700 resize-none font-medium"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Button -->
+    <button id="submitBtn" disabled onclick="proceedOrder()"
+            class="w-full mt-4 bg-gray-300 text-white font-black py-3.5 px-5 rounded-2xl transition-all duration-300 cursor-not-allowed text-sm shadow-sm">
+      متابعة الطلب
+    </button>
+
+    <!-- Back Link -->
+    <div class="mt-3">
+      <a href="login.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-gray-400 hover:text-[#FF3B4E] transition-colors">
+        <i class="fas fa-arrow-right"></i> العودة للرئيسية
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    let selectedCategory = '';
+
+    function selectService(element, type) {
+      selectedCategory = type;
+
+      // إعادة ضبط كافة البطاقات وإخفاء حقل النص
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.classList.remove('border-[#FF3B4E]', 'bg-red-50/40', 'shadow-sm');
+        card.classList.add('border-gray-100');
+        
+        const radio = card.querySelector('.radio-icon');
+        if (radio) {
+          radio.classList.remove('border-[#FF3B4E]', 'bg-[#FF3B4E]');
+          radio.classList.add('border-gray-300');
+          const dot = radio.querySelector('.dot');
+          if (dot) dot.classList.add('hidden');
+        }
+      });
+
+      const customContainer = document.getElementById('customInputContainer');
+      if (customContainer) customContainer.classList.add('hidden');
+
+      // تحديد البطاقة الحالية
+      element.classList.remove('border-gray-100');
+      element.classList.add('border-[#FF3B4E]', 'bg-red-50/40', 'shadow-sm');
+
+      const activeRadio = element.querySelector('.radio-icon');
+      if (activeRadio) {
+        activeRadio.classList.remove('border-gray-300');
+        activeRadio.classList.add('border-[#FF3B4E]', 'bg-[#FF3B4E]');
+        const activeDot = activeRadio.querySelector('.dot');
+        if (activeDot) activeDot.classList.remove('hidden');
+      }
+
+      const btn = document.getElementById('submitBtn');
+      if (type === 'custom') {
+        if (customContainer) customContainer.classList.remove('hidden');
+        btn.innerText = 'متابعة الطلب المخصص';
+      } else {
+        btn.innerText = 'متابعة الطلب';
+      }
+
+      // تفعيل الزر
+      btn.disabled = false;
+      btn.classList.remove('bg-gray-300', 'cursor-not-allowed');
+      btn.classList.add('bg-[#FF3B4E]', 'hover:bg-red-600', 'shadow-md', 'shadow-red-500/20');
+    }
+
+    function proceedOrder() {
+      if(!selectedCategory) return;
+      let url = 'index.html?cat=' + selectedCategory;
+      if (selectedCategory === 'custom') {
+        const notes = document.getElementById('customNotes').value.trim();
+        url += '&notes=' + encodeURIComponent(notes);
+      }
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>
