@@ -1,1 +1,307 @@
-<h1>FadFood is working successfully!</h1><p>The deployment on Vercel is active.</p>
+^\
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FadFood Kairouan - أمانة في كل توصيلة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --dark-color: #2f3542;
+            --light-pink: #fceae8;
+            --grey-text: #747d8c;
+            --border-radius: 12px;
+            --big-border-radius: 30px;
+            --font-family: 'Tajawal', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--light-pink);
+            color: var(--dark-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* الجزء العلوي */
+        .top-tagline {
+            color: var(--grey-text);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .logo-timer-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 10px;
+        }
+
+        .logo-timer-container img.timer {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-timer-container img.logo-text {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: auto;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 5px;
+            background-color: #ffcccc;
+            border-radius: 5px;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+            width: 25px;
+        }
+
+        /* النصوص الترحيبية */
+        .welcome-text h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .welcome-text p {
+            color: var(--grey-text);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* أزرار الاختيار */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .btn-category {
+            background-color: #fff0f0;
+            color: var(--dark-color);
+            border: 1px solid #ffe0e0;
+            border-radius: var(--border-radius);
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-category:hover {
+            background-color: #ffe0e0;
+        }
+
+        .btn-category i {
+            color: var(--primary-color);
+        }
+
+        /* محدد الموقع */
+        .location-selector {
+            background-color: #f8f9fa;
+            width: 100%;
+            max-width: 350px;
+            padding: 15px 20px;
+            border-radius: var(--big-border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+
+        .location-selector i.fa-map-marker-alt {
+            color: var(--primary-color);
+        }
+
+        .location-selector span {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .location-selector i.fa-chevron-down {
+            color: var(--grey-text);
+            font-size: 12px;
+        }
+
+        /* زر ابدأ الطلب */
+        .btn-start {
+            width: 100%;
+            max-width: 350px;
+            padding: 18px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--big-border-radius);
+            font-size: 18px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+            transition: transform 0.2s, background-color 0.3s;
+            margin-bottom: 40px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-start:hover {
+            background-color: #e84118;
+            transform: translateY(-2px);
+        }
+
+        /* روابط التواصل الاجتماعي */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #f1f2f6;
+            color: var(--dark-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            .main-container {
+                padding: 20px 10px;
+            }
+            .welcome-text h1 {
+                font-size: 24px;
+            }
+            .welcome-text p {
+                font-size: 14px;
+            }
+            .btn-category {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="top-tagline">أمانة في كل توصيلة</div>
+
+        <div class="logo-timer-container">
+            <img src="https://i.ibb.co/17j58Lg/timer-icon.png" alt="مؤقت FadFood" class="timer">
+            <img src="https://i.ibb.co/r2t1yXb/fadfood-text.png" alt="شعار FadFood" class="logo-text">
+        </div>
+
+        <div class="slider-dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="welcome-text">
+            <h1>أهلاً وسهلاً بك في FadFood</h1>
+            <p>فريقنا يعمل بأمانة وتفانٍ ليصل طعامك وطلباتك إليك بسرعة وثقة تستحقها — لأن راحتكم أولويتنا في كل طلب</p>
+        </div>
+
+        <div class="category-buttons">
+            <button class="btn-category">
+                <i class="fas fa-utensils"></i> مأكولات
+            </button>
+            <button class="btn-category">
+                <i class="fas fa-box"></i> طلبات
+            </button>
+            <button class="btn-category">
+                <i class="fas fa-shopping-cart"></i> تسوق
+            </button>
+        </div>
+
+        <div class="location-selector">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>القيروان، تونس</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <a href="home.html" class="btn-start">ابدأ الطلب</a>
+
+        <div class="social-links">
+            <a href="tel:+216..." class="social-icon"><i class="fas fa-phone"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // مثال بسيط لربط محدد الموقع (يمكن تطويره لاحقًا)
+        document.querySelector('.location-selector').addEventListener('click', function() {
+            alert('جاري فتح خيارات تغيير المدينة...');
+        });
+    </script>
+</body>
+</html>
+
+
