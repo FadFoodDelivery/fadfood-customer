@@ -1,4 +1,3 @@
-^\
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -17,14 +16,12 @@
             --big-border-radius: 30px;
             --font-family: 'Tajawal', sans-serif;
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: var(--font-family);
         }
-
         body {
             background-color: var(--light-pink);
             color: var(--dark-color);
@@ -34,7 +31,6 @@
             min-height: 100vh;
             padding: 20px;
         }
-
         .main-container {
             width: 100%;
             max-width: 480px;
@@ -48,245 +44,157 @@
             text-align: center;
             overflow: hidden;
         }
-
-        /* الجزء العلوي */
         .top-tagline {
-            color: var(--grey-text);
+            color: #b38b4d;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 700;
             margin-bottom: 15px;
         }
-
         .logo-timer-container {
-            position: relative;
-            width: 120px;
-            height: 120px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
             margin-bottom: 10px;
         }
-
-        .logo-timer-container img.timer {
-            width: 100%;
-            height: 100%;
+        .logo-timer-container img {
+            width: 180px;
+            height: auto;
             object-fit: contain;
         }
-
-        .logo-timer-container img.logo-text {
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: auto;
-        }
-
         .slider-dots {
             display: flex;
             justify-content: center;
-            gap: 5px;
-            margin-bottom: 30px;
+            gap: 6px;
+            margin-bottom: 25px;
         }
-
         .dot {
-            width: 10px;
-            height: 5px;
+            width: 8px;
+            height: 4px;
             background-color: #ffcccc;
-            border-radius: 5px;
+            border-radius: 4px;
         }
-
         .dot.active {
             background-color: var(--primary-color);
-            width: 25px;
+            width: 22px;
         }
-
-        /* النصوص الترحيبية */
         .welcome-text h1 {
             color: var(--primary-color);
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
-
         .welcome-text p {
             color: var(--grey-text);
-            font-size: 16px;
+            font-size: 14px;
             line-height: 1.6;
             margin-bottom: 25px;
-            max-width: 400px;
+            max-width: 380px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* أزرار الاختيار */
         .category-buttons {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
+            gap: 8px;
+            margin-bottom: 30px;
         }
-
         .btn-category {
             background-color: #fff0f0;
             color: var(--dark-color);
             border: 1px solid #ffe0e0;
-            border-radius: var(--border-radius);
-            padding: 10px 15px;
-            font-size: 14px;
+            border-radius: 20px;
+            padding: 8px 14px;
+            font-size: 13px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 5px;
         }
-
-        .btn-category:hover {
-            background-color: #ffe0e0;
-        }
-
         .btn-category i {
             color: var(--primary-color);
         }
-
-        /* محدد الموقع */
         .location-selector {
             background-color: #f8f9fa;
             width: 100%;
             max-width: 350px;
-            padding: 15px 20px;
+            padding: 14px 20px;
             border-radius: var(--big-border-radius);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
-            cursor: pointer;
+            margin-bottom: 25px;
             border: 1px solid #e9ecef;
+            cursor: pointer;
         }
-
         .location-selector i.fa-map-marker-alt {
             color: var(--primary-color);
         }
-
         .location-selector span {
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
         }
-
-        .location-selector i.fa-chevron-down {
-            color: var(--grey-text);
-            font-size: 12px;
-        }
-
-        /* زر ابدأ الطلب */
         .btn-start {
             width: 100%;
             max-width: 350px;
-            padding: 18px;
+            padding: 16px;
             background-color: var(--primary-color);
             color: #ffffff;
             border: none;
             border-radius: var(--big-border-radius);
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 900;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
-            transition: transform 0.2s, background-color 0.3s;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-decoration: none;
             display: inline-block;
         }
-
-        .btn-start:hover {
-            background-color: #e84118;
-            transform: translateY(-2px);
-        }
-
-        /* روابط التواصل الاجتماعي */
         .social-links {
             display: flex;
             justify-content: center;
             gap: 15px;
         }
-
         .social-icon {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background-color: #f1f2f6;
             color: var(--dark-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 18px;
-            transition: all 0.3s;
+            font-size: 16px;
             text-decoration: none;
-        }
-
-        .social-icon:hover {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            transform: scale(1.1);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 400px) {
-            .main-container {
-                padding: 20px 10px;
-            }
-            .welcome-text h1 {
-                font-size: 24px;
-            }
-            .welcome-text p {
-                font-size: 14px;
-            }
-            .btn-category {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
         }
     </style>
 </head>
 <body>
-
     <div class="main-container">
         <div class="top-tagline">أمانة في كل توصيلة</div>
-
         <div class="logo-timer-container">
-            <img src="https://i.ibb.co/17j58Lg/timer-icon.png" alt="مؤقت FadFood" class="timer">
-            <img src="https://i.ibb.co/r2t1yXb/fadfood-text.png" alt="شعار FadFood" class="logo-text">
+            <img src="images/logo.png" alt="شعار FadFood">
         </div>
-
         <div class="slider-dots">
             <div class="dot"></div>
-            <div class="dot active"></div>
             <div class="dot"></div>
+            <div class="dot active"></div>
         </div>
-
         <div class="welcome-text">
             <h1>أهلاً وسهلاً بك في FadFood</h1>
             <p>فريقنا يعمل بأمانة وتفانٍ ليصل طعامك وطلباتك إليك بسرعة وثقة تستحقها — لأن راحتكم أولويتنا في كل طلب</p>
         </div>
-
         <div class="category-buttons">
-            <button class="btn-category">
-                <i class="fas fa-utensils"></i> مأكولات
-            </button>
-            <button class="btn-category">
-                <i class="fas fa-box"></i> طلبات
-            </button>
-            <button class="btn-category">
-                <i class="fas fa-shopping-cart"></i> تسوق
-            </button>
+            <button class="btn-category"><i class="fas fa-shopping-cart"></i> تسوق</button>
+            <button class="btn-category"><i class="fas fa-box"></i> طلبات</button>
+            <button class="btn-category"><i class="fas fa-utensils"></i> مأكولات</button>
         </div>
-
         <div class="location-selector">
-            <i class="fas fa-map-marker-alt"></i>
             <span>القيروان، تونس</span>
-            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-map-marker-alt"></i>
         </div>
-
-        <a href="home.html" class="btn-start">ابدأ الطلب</a>
-
+        <a href="login.html" class="btn-start">ابدأ الطلب</a>
         <div class="social-links">
             <a href="tel:+216..." class="social-icon"><i class="fas fa-phone"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -294,14 +202,5 @@
             <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
         </div>
     </div>
-
-    <script>
-        // مثال بسيط لربط محدد الموقع (يمكن تطويره لاحقًا)
-        document.querySelector('.location-selector').addEventListener('click', function() {
-            alert('جاري فتح خيارات تغيير المدينة...');
-        });
-    </script>
 </body>
 </html>
-
-
