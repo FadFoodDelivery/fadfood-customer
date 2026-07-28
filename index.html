@@ -3,301 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تطبيق توصيل القيروان | FadFood</title>
+    <title>FadFood - القيروان، تونس</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #fceae8;
-            --accent-color: #ff4757;
+            --primary-color: #ff4757;
             --dark-color: #2f3542;
-            --glass-bg: #ffffff;
-            --glass-border: #ffe0e0;
-            --text-main: #2f3542;
-            --text-dim: #747d8c;
+            --light-pink: #FADCE0;
+            --grey-text: #747d8c;
+            --gold-text: #b8860b;
+            --font-family: 'Tajawal', sans-serif;
         }
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            font-family: 'Tajawal', sans-serif;
-            color: var(--text-main);
+            font-family: var(--font-family);
+        }
+        body {
+            background-color: var(--light-pink);
+            color: var(--dark-color);
             display: flex;
             justify-content: center;
-        }
-        .container {
-            width: 100%;
-            max-width: 480px;
+            align-items: center;
             min-height: 100vh;
-            background: #ffffff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-            padding-bottom: 120px;
-            box-sizing: border-box;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        .logo-img {
-            width: 120px;
-            height: auto;
-            object-fit: contain;
-        }
-        .categories {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 1rem;
-            scrollbar-width: none;
-        }
-        .category-chip {
-            background: #fff0f0;
-            border: 1px solid var(--glass-border);
-            padding: 8px 20px;
-            border-radius: 20px;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: 700;
-        }
-        .category-chip.active {
-            background: var(--accent-color);
-            color: #fff;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        .item-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 1.2rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-        }
-        .item-img {
-            width: 90px;
-            height: 90px;
-            border-radius: 18px;
-            object-fit: cover;
-            border: 1px solid var(--glass-border);
-        }
-        .item-info {
-            flex: 1;
-        }
-        .item-info h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: var(--text-main);
-        }
-        .item-info p {
-            margin: 5px 0;
-            color: var(--text-dim);
-            font-size: 0.85rem;
-        }
-        .price {
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        .add-btn {
-            background: var(--accent-color);
-            color: #fff;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: 0.2s;
-        }
-        .cart-float {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-color);
-            color: #fff;
-            padding: 18px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            z-index: 100;
-            cursor: pointer;
-            width: 85%;
-            max-width: 420px;
-            justify-content: space-between;
-        }
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
+        .screen {
             display: none;
-            z-index: 1000;
-            justify-content: center;
-            align-items: flex-end;
-        }
-        .modal-content {
-            background: #ffffff;
             width: 100%;
-            max-width: 480px;
-            border-radius: 30px 30px 0 0;
-            padding: 2.5rem 2rem;
-            border-top: 3px solid var(--accent-color);
-            box-sizing: border-box;
-            max-height: 90vh;
-            overflow-y: auto;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px 20px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
-        .input-field {
+        .screen.active {
+            display: flex;
+        }
+        
+        /* Background Icons for Screen 2 */
+        .bg-decor {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(255, 71, 87, 0.15);
+            z-index: 1;
+        }
+        .decor-1 { top: 20px; left: 20px; }
+        .decor-2 { top: 20px; right: 20px; }
+        .decor-3 { bottom: 20px; left: 20px; }
+        .decor-4 { bottom: 20px; right: 20px; }
+
+        /* Shared elements */
+        .security-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold-text);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .top-verified {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .top-verified i {
+            color: #2ed573;
+            font-size: 14px;
+        }
+        .top-verified span {
+            font-weight: 900;
+            font-size: 15px;
+            color: var(--dark-color);
+        }
+
+        .logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .stopwatch-icon {
+            width: 65px;
+            height: 65px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+            margin-bottom: 6px;
+            position: relative;
+        }
+        .stopwatch-icon::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            width: 14px;
+            height: 6px;
+            background: var(--dark-color);
+            border-radius: 3px;
+        }
+        .wordmark {
+            font-weight: 900;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+        .wordmark .f-red {
+            color: var(--primary-color);
+            letter-spacing: -1px;
+        }
+        .wordmark .text-black {
+            color: var(--dark-color);
+        }
+
+        .dots-indicator {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 18px;
+            justify-content: center;
+        }
+        .dot {
+            height: 4px;
+            border-radius: 2px;
+        }
+        .dot.active {
+            width: 20px;
+            background-color: var(--primary-color);
+        }
+        .dot.inactive {
+            width: 8px;
+            background-color: #f1f2f6;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        p.desc {
+            color: var(--grey-text);
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Screen 1 specific elements */
+        .pill-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+        .pill {
+            background-color: #fdf2f2;
+            border: 1px solid #fae1e1;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .location-box {
+            width: 100%;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 12px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        .location-box i {
+            color: var(--primary-color);
+        }
+        .btn-cta {
             width: 100%;
             padding: 15px;
-            margin-bottom: 1.2rem;
-            border-radius: 15px;
-            border: 1px solid #ddd;
-            background: #f9f9f9;
-            color: #333;
-            font-family: inherit;
-            outline: none;
-            box-sizing: border-box;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
         }
-        .warning-box {
-            background: #fff3f3;
-            border: 1px solid #ffcccc;
-            color: #d63031;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
+        .btn-cta:hover {
+            background-color: #e84118;
+        }
+        .social-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .social-icon-btn {
+            width: 38px;
+            height: 38px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--grey-text);
+            font-size: 15px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        /* Screen 2 Service Cards */
+        .services-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        .service-card {
+            border: 2px solid #f1f2f6;
+            border-radius: 20px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fff;
+        }
+        .service-card.selected {
+            border-color: var(--primary-color);
+            background-color: #fdf2f2;
+        }
+        .service-icon-wrap {
+            width: 42px;
+            height: 42px;
+            background-color: #fdf2f2;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .service-info {
+            flex-grow: 1;
+        }
+        .service-info h3 {
+            font-size: 14px;
+            font-weight: 900;
+            color: var(--dark-color);
+            margin-bottom: 2px;
+        }
+        .service-info p {
+            font-size: 11px;
+            color: var(--grey-text);
+            font-weight: 500;
+        }
+        .service-end-icon {
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+        .back-link {
+            font-size: 13px;
             font-weight: 700;
+            color: var(--grey-text);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Screen 3 OTP Elements */
+        .otp-hint {
+            font-size: 12px;
+            color: var(--grey-text);
+            margin-bottom: 15px;
+        }
+        .otp-hint strong {
+            color: var(--primary-color);
+        }
+        .input-group {
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--dark-color);
+        }
+        .otp-input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: 1px solid #e9ecef;
+            background-color: #f8f9fa;
+            font-size: 18px;
+            font-weight: 900;
+            text-align: center;
+            letter-spacing: 6px;
+            outline: none;
+            color: var(--dark-color);
+        }
+        .otp-input:focus {
+            border-color: var(--primary-color);
+            background-color: #fff;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <div class="logo"><img src="images/logo.png" alt="FadFood" class="logo-img"></div>
-        <div style="color: var(--accent-color); font-weight: bold; background: #fff0f0; padding: 6px 14px; border-radius: 15px;">القيروان</div>
-    </header>
 
-    <input type="text" class="input-field" placeholder="ابحث عن وجبتك المفضلة...">
+    <!-- Background Icons for Screen 2 -->
+    <i class="fas fa-motorcycle bg-decor decor-1"></i>
+    <i class="fas fa-shopping-cart bg-decor decor-2"></i>
+    <i class="fas fa-box bg-decor decor-3"></i>
+    <i class="fas fa-shopping-basket bg-decor decor-4"></i>
 
-    <div class="categories">
-        <div class="category-chip active">الكل</div>
-        <div class="category-chip">بيتزا</div>
-        <div class="category-chip">برجر</div>
-        <div class="category-chip">كفتجي</div>
-        <div class="category-chip">حلويات</div>
-    </div>
-
-    <h2 style="margin: 1.5rem 0 10px; font-size: 1.2rem;">القائمة المتوفرة</h2>
-    <div class="grid" id="menu-grid"></div>
-</div>
-
-<div class="cart-float" id="cart-bar" onclick="showCart()">
-    <div id="cart-info">سلة الطلبات (0)</div>
-    <div id="cart-total">0.000 DT</div>
-</div>
-
-<div class="modal" id="cart-modal">
-    <div class="modal-content">
-        <h2 style="margin-top: 0; color: var(--accent-color); margin-bottom: 15px;">تأكيد طلبك</h2>
+    <!-- SCREEN 1: Welcome / Splash -->
+    <div id="screen-1" class="screen active">
+        <div class="security-badge">أمانة في كل توصيلة</div>
         
-        <div class="warning-box">
-            <i class="fas fa-exclamation-triangle"></i> تنبيه هام: يرجى التأكد من صحة العنوان ورقم الهاتف. الطلبات المزيفة تعرّض الرقم للحظر النهائي من الخدمة في القيروان.
-        </div>
-
-        <div id="cart-items-list" style="margin-bottom: 1.5rem; max-height: 120px; overflow-y: auto; color: #555; border-bottom: 1px solid #eee; padding-bottom: 10px;"></div>
-        
-        <input type="text" id="customer-address" class="input-field" placeholder="العنوان في القيروان (نهج، حومة...)">
-        <input type="tel" id="customer-phone" class="input-field" placeholder="رقم الهاتف للتأكيد (مثال: 55073503)">
-        
-        <button onclick="sendToWhatsApp()" style="width: 100%; padding: 16px; border-radius: 15px; border: none; background: var(--accent-color); color: #fff; font-weight: bold; cursor: pointer; font-size: 1.1rem; box-shadow: 0 6px 20px rgba(255,71,87,0.3);">
-            إرسال عبر واتساب
-        </button>
-        <button onclick="closeModal()" style="width: 100%; margin-top: 12px; background: none; border: none; color: #888; cursor: pointer; font-weight: bold;">
-            إلغاء
-        </button>
-    </div>
-</div>
-
-<script>
-const menuItems = [
-    { id: 1, name: "بيتزا السلطان", desc: "صلصة، موزاريلا، زيتون", price: 15.000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" },
-    { id: 2, name: "برجر هاوس", desc: "لحم بقري، جبنة، صوص خاص", price: 12.500, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
-    { id: 3, name: "صحن كفتجي", desc: "خضار مشكلة، بيض، تن", price: 8.000, img: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=200" }
-];
-
-let cart = [];
-
-function renderMenu() {
-    const grid = document.getElementById('menu-grid');
-    grid.innerHTML = menuItems.map(item => `
-        <div class="item-card">
-            <img src="${item.img}" class="item-img">
-            <div class="item-info">
-                <h3>${item.name}</h3>
-                <p>${item.desc}</p>
-                <span class="price">${item.price.toFixed(3)} DT</span>
+        <div class="logo-box">
+            <div class="stopwatch-icon"><i class="fas fa-stopwatch"></i></div>
+            <div class="wordmark">
+                <span class="f-red">F</span><span class="text-black">ad</span><span class="f-red">F</span><span class="text-black">ood</span>
             </div>
-            <button class="add-btn" onclick="addToCart(${item.id})">+</button>
         </div>
-    `).join('');
-}
 
-function addToCart(id) {
-    const item = menuItems.find(i => i.id === id);
-    cart.push(item);
-    updateCartBar();
-}
+        <div class="dots-indicator">
+            <div class="dot active"></div>
+            <div class="dot inactive"></div>
+            <div class="dot inactive"></div>
+        </div>
 
-function updateCartBar() {
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    document.getElementById('cart-info').innerText = `سلة الطلبات (${cart.length})`;
-    document.getElementById('cart-total').innerText = `${total.toFixed(3)} DT`;
-}
+        <h1>أهلاً وسهلاً بك في FadFood</h1>
+        <p class="desc">فريقنا يعمل بأمانة وتفان ليصل طعامك وطلباتك إليك بسرعة وثقة تستحقها – لأن راحتكم أولويتنا في كل طلب</p>
 
-function showCart() {
-    if(cart.length === 0) return alert("السلة فارغة");
-    document.getElementById('cart-modal').style.display = 'flex';
-    const list = document.getElementById('cart-items-list');
-    list.innerHTML = cart.map(item => `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>${item.name}</span><strong>${item.price.toFixed(3)} DT</strong></div>`).join('');
-}
+        <div class="pill-badges">
+            <div class="pill">مأكولات 🍴</div>
+            <div class="pill">طلبات 📦</div>
+            <div class="pill">تسوق 🛒</div>
+        </div>
 
-function closeModal() {
-    document.getElementById('cart-modal').style.display = 'none';
-}
+        <div class="location-box">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>القيروان، تونس</span>
+        </div>
 
-function sendToWhatsApp() {
-    const address = document.getElementById('customer-address').value;
-    const phone = document.getElementById('customer-phone').value;
-    
-    if(!address) return alert("الرجاء أدخل العنوان بالتفصيل");
-    if(!phone || phone.length < 8) return alert("الرجاء أدخل رقم هاتف صحيح للتأكيد");
-    
-    const orderDetails = cart.map(i => i.name).join('، ');
-    const total = cart.reduce((sum, i) => sum + i.price, 0);
-    
-    const message = `طلب جديد FadFood (تأكيد عبر التطبيق):\n- الطلبات: ${orderDetails}\n- العنوان: ${address}\n- الهاتف: ${phone}\n- الإجمالي: ${total.toFixed(3)} DT`;
-    
-    window.open(`https://wa.me/21655073503?text=${encodeURIComponent(message)}`);
-}
+        <button class="btn-cta" onclick="goToScreen(2)">ابدأ الطلب</button>
 
-renderMenu();
-</script>
+        <div class="social-footer">
+            <a href="#" class="social-icon-btn"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-icon-btn"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon-btn"><i class="fas fa-phone-alt"></i></a>
+        </div>
+    </div>
+
+
+    <!-- SCREEN 2: Service Selection -->
+    <div id="screen-2" class="screen">
+        <div class="top-verified">
+            <i class="fas fa-check-circle"></i>
+            <span>FadFood</span>
+        </div>
+
+        <div class="logo-box" style="margin-bottom: 10px;">
+            <div class="stopwatch-icon" style="width: 50px; height: 50px; font-size: 22px;"><i class="fas fa-stopwatch"></i></div>
+        </div>
+
+        <h1>ما الذي تحتاج لإنجازه اليوم؟</h1>
+        <p class="desc" style="margin-bottom: 15px;">اختر نوع الخدمة التي تريدها، وسنقوم بتلبيتها فوراً.</p>
+
+        <div class="services-list">
+            <!-- Service 1 -->
+            <div class="service-card" onclick="selectService(this)">
+                <div class="service-icon-wrap">🍔</div>
+                <div class="service-info">
+                    <h3>توصيل المأكولات 🍕</h3>
+                    <p>من أفضل المطاعم والمقاهي في منطقتك</p>
+                </div>
+            </div>
+
+            <!-- Service 2 (Selected by default) -->
+            <div class="service-card selected" onclick="selectService(this)">
+                <div class="service-icon-wrap">📦</div>
+                <div class="service-info">
+                    <h3>إنجاز مهمات</h3>
+                    <p>نقل أغراض، شراء من الصيدلية أو المكتبة.</p>
+                </div>
+                <div class="service-end-icon"><i class="fas fa-motorcycle"></i></div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card" onclick="selectService(this)">
+                <div class="service-icon-wrap">🛒</div>
+                <div class="service-info">
+                    <h3>تسوق المقاضي</h3>
+                    <p>مستلزمات المنزل والخضروات اليومية</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-cta" style="margin-bottom: 12px; margin-top: 5px;" onclick="goToScreen(3)">متابعة الطلب</button>
+
+        <a class="back-link" onclick="goToScreen(1)">العودة للرئيسية ←</a>
+    </div>
+
+
+    <!-- SCREEN 3: OTP Verification -->
+    <div id="screen-3" class="screen">
+        <div class="logo-box">
+            <div class="stopwatch-icon"><i class="fas fa-stopwatch"></i></div>
+            <div class="wordmark">
+                <span class="f-red">F</span><span class="text-black">ad</span><span class="f-red">F</span><span class="text-black">ood</span>
+            </div>
+        </div>
+
+        <h1>تأكيد الرمز</h1>
+        <p class="desc" style="margin-bottom: 10px;">تم إرسال رمز التحقق المكون من 4 أرقام إلى هاتفك</p>
+        
+        <div class="otp-hint">رمز التجربة الوهمي للتأكيد: <strong style="color: var(--primary-color);">4040</strong></div>
+
+        <div class="input-group">
+            <label for="otp">رمز التحقق (OTP)</label>
+            <input type="text" id="otp" class="otp-input" value="4040" maxlength="4" dir="ltr">
+        </div>
+
+        <button class="btn-cta" onclick="completeLogin()">تأكيد الحساب والدخول</button>
+
+        <a class="back-link" onclick="goToScreen(1)">العودة للرئيسية →</a>
+    </div>
+
+    <script>
+        function goToScreen(screenNumber) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen-' + screenNumber).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function selectService(cardElement) {
+            document.querySelectorAll('.service-card').forEach(c => {
+                c.classList.remove('selected');
+                const iconEnd = c.querySelector('.service-end-icon');
+                if(iconEnd) iconEnd.remove();
+            });
+            cardElement.classList.add('selected');
+            if(!cardElement.querySelector('.service-end-icon')) {
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'service-end-icon';
+                iconDiv.innerHTML = '<i class="fas fa-motorcycle"></i>';
+                cardElement.appendChild(iconDiv);
+            }
+        }
+
+        function completeLogin() {
+            alert('تم تأكيد الحساب بنجاح!');
+            // الانتقال للشاشة أو اللوجيك اللاحق للطلبات
+            window.location.href = 'index.html?logged=true';
+        }
+    </script>
 </body>
 </html>
