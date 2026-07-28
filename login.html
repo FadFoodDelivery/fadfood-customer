@@ -86,6 +86,8 @@
             font-size: 15px;
             outline: none;
             transition: border-color 0.3s;
+            text-align: center;
+            letter-spacing: 2px;
         }
         .input-field:focus {
             border-color: var(--primary-color);
@@ -119,6 +121,14 @@
         .back-link:hover {
             color: var(--primary-color);
         }
+        .otp-section {
+            display: none;
+        }
+        .timer-text {
+            font-size: 13px;
+            color: var(--grey-text);
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -126,18 +136,65 @@
         <div class="logo-container">
             <img src="images/logo.png" alt="شعار FadFood">
         </div>
-        <div class="login-header">
-            <h1>تسجيل الدخول</h1>
-            <p>أدخل رقم هاتفك للمتابعة وطلب وجبتك المفضلة</p>
-        </div>
-        <form action="index.html" method="GET" style="width: 100%;">
+
+        <!-- خطوة إدخال رقم الهاتف -->
+        <div id="phone-step" style="width: 100%;">
+            <div class="login-header">
+                <h1>تسجيل الدخول</h1>
+                <p>أدخل رقم هاتفك لتأكيد حسابك وتجنب الطلبات المزيفة</p>
+            </div>
             <div class="form-group">
                 <label for="phone">رقم الهاتف</label>
-                <input type="tel" id="phone" class="input-field" placeholder="مثال: 55073503 أو 28011748" required>
+                <input type="tel" id="phone" class="input-field" placeholder="مثال: 55073503" dir="ltr" required>
             </div>
-            <button type="submit" class="btn-submit">دخول</button>
-        </form>
-        <a href="index.html" class="back-link"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+            <button type="button" class="btn-submit" onclick="sendOtpCode()">إرسال رمز التأكيد</button>
+        </div>
+
+        <!-- خطوة إدخال رمز التحقق OTP -->
+        <div id="otp-step" class="otp-section" style="width: 100%;">
+            <div class="login-header">
+                <h1>تأكيد الرمز</h1>
+                <p>تم إرسال رمز التحقق المكون من 4 أرقام إلى هاتفك</p>
+            </div>
+            <div class="timer-text" id="otp-hint">رمز التجربة الوهمي للتأكيد: <strong style="color: var(--primary-color);" id="generated-code">1234</strong></div>
+            <div class="form-group">
+                <label for="otp-code">رمز التحقق (OTP)</label>
+                <input type="text" id="otp-code" class="input-field" maxlength="4" placeholder="••••" required>
+            </div>
+            <button type="button" class="btn-submit" onclick="verifyOtpCode()">تأكيد الحساب والدخول</button>
+        </div>
+
+        <a href="index.html" class="back-link" style="margin-top: 15px;"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
     </div>
+
+    <script>
+        let correctOtp = "1234";
+
+        function sendOtpCode() {
+            const phone = document.getElementById('phone').value.trim();
+            if(!phone || phone.length < 8) {
+                alert('الرجاء إدخال رقم هاتف صحيح');
+                return;
+            }
+            // توليد رمز تحقق عشوائي من 4 أرقام
+            correctOtp = Math.floor(1000 + Math.random() * 9000).toString();
+            document.getElementById('generated-code').innerText = correctOtp;
+            
+            // إخفاء مرحلة الهاتف وإظهار مرحلة الكود
+            document.getElementById('phone-step').style.display = 'none';
+            document.getElementById('otp-step').style.display = 'block';
+            alert('تم محاكاة إرسال رسالة نصية SMS برمز التأكيد رقم: ' + correctOtp);
+        }
+
+        function verifyOtpCode() {
+            const enteredOtp = document.getElementById('otp-code').value.trim();
+            if(enteredOtp === correctOtp) {
+                alert('تم تأكيد الحساب بنجاح!');
+                window.location.href = 'index.html';
+            } else {
+                alert('رمز التحقق غير صحيح، حاول مرة أخرى');
+            }
+        }
+    </script>
 </body>
 </html>
