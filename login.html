@@ -187,7 +187,7 @@
         <div id="phone-step" style="width: 100%;">
             <div class="login-header">
                 <h1>تسجيل الدخول</h1>
-                <p>أدخل رقم هاتفك أو اربط حسابك لتأكيد هويتك وتجنب الطلبات المزيفة</p>
+                <p>أدخل رقم هاتفاك أو اربط حسابك لتأكيد هويتك وتجنب الطلبات المزيفة</p>
             </div>
             
             <div class="form-group">
@@ -219,7 +219,7 @@
             <button type="button" class="btn-submit" onclick="verifyOtpCode()">تأكيد الحساب والدخول</button>
         </div>
 
-        <a href="login.html" class="back-link" style="margin-top: 20px;"><i class="fas fa-arrow-right"></i> العودة</a>
+        <a href="index.html" class="back-link" style="margin-top: 20px;"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
     </div>
 
     <script>
@@ -242,9 +242,8 @@
         function verifyOtpCode() {
             const enteredOtp = document.getElementById('otp-code').value.trim();
             if(enteredOtp === correctOtp) {
-                alert('تم تأكيد الحساب بنجاح!');
-                // الانتقال المباشر لصفحة اختيار نوع الخدمة/الطلب بعد تأكيد الحساب
-                window.location.href = 'categories.html';
+                alert('تم تأكيد الحساب والدخول بنجاح!');
+                window.location.href = 'index.html';
             } else {
                 alert('رمز التحقق غير صحيح، حاول مرة أخرى');
             }
@@ -252,8 +251,7 @@
 
         function socialLogin(provider) {
             alert('تم ربط حسابك بنجاح عبر ' + provider + ' وتأكيد الهوية!');
-            // الانتقال المباشر لصفحة اختيار نوع الخدمة/الطلب بعد الربط الاجتماعي
-            window.location.href = 'categories.html';
+            window.location.href = 'index.html';
         }
     </script>
 </body>
