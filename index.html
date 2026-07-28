@@ -3,204 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FadFood Kairouan - أمانة في كل توصيلة</title>
+    <title>تطبيق توصيل القيروان | FadFood</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #ff4757;
+            --bg-color: #fceae8;
+            --accent-color: #ff4757;
             --dark-color: #2f3542;
-            --light-pink: #fceae8;
-            --grey-text: #747d8c;
-            --border-radius: 12px;
-            --big-border-radius: 30px;
-            --font-family: 'Tajawal', sans-serif;
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: var(--font-family);
+            --glass-bg: #ffffff;
+            --glass-border: #ffe0e0;
+            --text-main: #2f3542;
+            --text-dim: #747d8c;
         }
         body {
-            background-color: var(--light-pink);
-            color: var(--dark-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-main);
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
         }
-        .main-container {
+        .container {
             width: 100%;
             max-width: 480px;
+            min-height: 100vh;
             background: #ffffff;
-            border-radius: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            padding: 30px 20px;
+            padding: 1.5rem;
+            padding-bottom: 120px;
+            box-sizing: border-box;
+        }
+        header {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            overflow: hidden;
+            margin-bottom: 1.5rem;
         }
-        .top-tagline {
-            color: #b38b4d;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        .logo-timer-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .logo-timer-container img {
-            width: 180px;
+        .logo-img {
+            width: 120px;
             height: auto;
             object-fit: contain;
         }
-        .slider-dots {
+        .categories {
             display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 25px;
-        }
-        .dot {
-            width: 8px;
-            height: 4px;
-            background-color: #ffcccc;
-            border-radius: 4px;
-        }
-        .dot.active {
-            background-color: var(--primary-color);
-            width: 22px;
-        }
-        .welcome-text h1 {
-            color: var(--primary-color);
-            font-size: 26px;
-            font-weight: 900;
-            margin-bottom: 12px;
-        }
-        .welcome-text p {
-            color: var(--grey-text);
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            max-width: 380px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .category-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 30px;
-        }
-        .btn-category {
-            background-color: #fff0f0;
-            color: var(--dark-color);
-            border: 1px solid #ffe0e0;
-            border-radius: 20px;
-            padding: 8px 14px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .btn-category i {
-            color: var(--primary-color);
-        }
-        .location-selector {
-            background-color: #f8f9fa;
-            width: 100%;
-            max-width: 350px;
-            padding: 14px 20px;
-            border-radius: var(--big-border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 10px;
-            margin-bottom: 25px;
-            border: 1px solid #e9ecef;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scrollbar-width: none;
+        }
+        .category-chip {
+            background: #fff0f0;
+            border: 1px solid var(--glass-border);
+            padding: 8px 20px;
+            border-radius: 20px;
+            white-space: nowrap;
             cursor: pointer;
-        }
-        .location-selector i.fa-map-marker-alt {
-            color: var(--primary-color);
-        }
-        .location-selector span {
+            transition: 0.3s;
             font-weight: 700;
-            font-size: 15px;
         }
-        .btn-start {
-            width: 100%;
-            max-width: 350px;
-            padding: 16px;
-            background-color: var(--primary-color);
-            color: #ffffff;
-            border: none;
-            border-radius: var(--big-border-radius);
-            font-size: 17px;
-            font-weight: 900;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
-            margin-bottom: 30px;
-            text-decoration: none;
-            display: inline-block;
+        .category-chip.active {
+            background: var(--accent-color);
+            color: #fff;
         }
-        .social-links {
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .item-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.2rem;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .social-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background-color: #f1f2f6;
-            color: var(--dark-color);
-            display: flex;
-            justify-content: center;
+            gap: 1rem;
             align-items: center;
-            font-size: 16px;
-            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .item-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 1px solid var(--glass-border);
+        }
+        .item-info {
+            flex: 1;
+        }
+        .item-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+        .item-info p {
+            margin: 5px 0;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        .price {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .add-btn {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .cart-float {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: #fff;
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            z-index: 100;
+            cursor: pointer;
+            width: 85%;
+            max-width: 420px;
+            justify-content: space-between;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .modal-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 30px 30px 0 0;
+            padding: 2.5rem 2rem;
+            border-top: 3px solid var(--accent-color);
+            box-sizing: border-box;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 1.2rem;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            color: #333;
+            font-family: inherit;
+            outline: none;
+            box-sizing: border-box;
+        }
+        .warning-box {
+            background: #fff3f3;
+            border: 1px solid #ffcccc;
+            color: #d63031;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="top-tagline">أمانة في كل توصيلة</div>
-        <div class="logo-timer-container">
-            <img src="images/logo.png" alt="شعار FadFood">
-        </div>
-        <div class="slider-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot active"></div>
-        </div>
-        <div class="welcome-text">
-            <h1>أهلاً وسهلاً بك في FadFood</h1>
-            <p>فريقنا يعمل بأمانة وتفانٍ ليصل طعامك وطلباتك إليك بسرعة وثقة تستحقها — لأن راحتكم أولويتنا في كل طلب</p>
-        </div>
-        <div class="category-buttons">
-            <button class="btn-category"><i class="fas fa-shopping-cart"></i> تسوق</button>
-            <button class="btn-category"><i class="fas fa-box"></i> طلبات</button>
-            <button class="btn-category"><i class="fas fa-utensils"></i> مأكولات</button>
-        </div>
-        <div class="location-selector">
-            <span>القيروان، تونس</span>
-            <i class="fas fa-map-marker-alt"></i>
-        </div>
-        <a href="login.html" class="btn-start">ابدأ الطلب</a>
-        <div class="social-links">
-            <a href="tel:+21628011748" class="social-icon"><i class="fas fa-phone"></i></a>
-            <a href="fb://profile/100088498393651" onclick="setTimeout(function(){window.location='https://www.facebook.com/profile.php?id=100088498393651';}, 500);" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="instagram://user?username=fadfooddelivery" onclick="setTimeout(function(){window.location='https://www.instagram.com/fadfooddelivery?igsh=ajNubWNobHpycTJy';}, 500);" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/21655073503" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-        </div>
+<div class="container">
+    <header>
+        <div class="logo"><img src="images/logo.png" alt="FadFood" class="logo-img"></div>
+        <div style="color: var(--accent-color); font-weight: bold; background: #fff0f0; padding: 6px 14px; border-radius: 15px;">القيروان</div>
+    </header>
+
+    <input type="text" class="input-field" placeholder="ابحث عن وجبتك المفضلة...">
+
+    <div class="categories">
+        <div class="category-chip active">الكل</div>
+        <div class="category-chip">بيتزا</div>
+        <div class="category-chip">برجر</div>
+        <div class="category-chip">كفتجي</div>
+        <div class="category-chip">حلويات</div>
     </div>
+
+    <h2 style="margin: 1.5rem 0 10px; font-size: 1.2rem;">القائمة المتوفرة</h2>
+    <div class="grid" id="menu-grid"></div>
+</div>
+
+<div class="cart-float" id="cart-bar" onclick="showCart()">
+    <div id="cart-info">سلة الطلبات (0)</div>
+    <div id="cart-total">0.000 DT</div>
+</div>
+
+<div class="modal" id="cart-modal">
+    <div class="modal-content">
+        <h2 style="margin-top: 0; color: var(--accent-color); margin-bottom: 15px;">تأكيد طلبك</h2>
+        
+        <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i> تنبيه هام: يرجى التأكد من صحة العنوان ورقم الهاتف. الطلبات المزيفة تعرّض الرقم للحظر النهائي من الخدمة في القيروان.
+        </div>
+
+        <div id="cart-items-list" style="margin-bottom: 1.5rem; max-height: 120px; overflow-y: auto; color: #555; border-bottom: 1px solid #eee; padding-bottom: 10px;"></div>
+        
+        <input type="text" id="customer-address" class="input-field" placeholder="العنوان في القيروان (نهج، حومة...)">
+        <input type="tel" id="customer-phone" class="input-field" placeholder="رقم الهاتف للتأكيد (مثال: 55073503)">
+        
+        <button onclick="sendToWhatsApp()" style="width: 100%; padding: 16px; border-radius: 15px; border: none; background: var(--accent-color); color: #fff; font-weight: bold; cursor: pointer; font-size: 1.1rem; box-shadow: 0 6px 20px rgba(255,71,87,0.3);">
+            إرسال عبر واتساب
+        </button>
+        <button onclick="closeModal()" style="width: 100%; margin-top: 12px; background: none; border: none; color: #888; cursor: pointer; font-weight: bold;">
+            إلغاء
+        </button>
+    </div>
+</div>
+
+<script>
+const menuItems = [
+    { id: 1, name: "بيتزا السلطان", desc: "صلصة، موزاريلا، زيتون", price: 15.000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200" },
+    { id: 2, name: "برجر هاوس", desc: "لحم بقري، جبنة، صوص خاص", price: 12.500, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200" },
+    { id: 3, name: "صحن كفتجي", desc: "خضار مشكلة، بيض، تن", price: 8.000, img: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=200" }
+];
+
+let cart = [];
+
+function renderMenu() {
+    const grid = document.getElementById('menu-grid');
+    grid.innerHTML = menuItems.map(item => `
+        <div class="item-card">
+            <img src="${item.img}" class="item-img">
+            <div class="item-info">
+                <h3>${item.name}</h3>
+                <p>${item.desc}</p>
+                <span class="price">${item.price.toFixed(3)} DT</span>
+            </div>
+            <button class="add-btn" onclick="addToCart(${item.id})">+</button>
+        </div>
+    `).join('');
+}
+
+function addToCart(id) {
+    const item = menuItems.find(i => i.id === id);
+    cart.push(item);
+    updateCartBar();
+}
+
+function updateCartBar() {
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    document.getElementById('cart-info').innerText = `سلة الطلبات (${cart.length})`;
+    document.getElementById('cart-total').innerText = `${total.toFixed(3)} DT`;
+}
+
+function showCart() {
+    if(cart.length === 0) return alert("السلة فارغة");
+    document.getElementById('cart-modal').style.display = 'flex';
+    const list = document.getElementById('cart-items-list');
+    list.innerHTML = cart.map(item => `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>${item.name}</span><strong>${item.price.toFixed(3)} DT</strong></div>`).join('');
+}
+
+function closeModal() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+function sendToWhatsApp() {
+    const address = document.getElementById('customer-address').value;
+    const phone = document.getElementById('customer-phone').value;
+    
+    if(!address) return alert("الرجاء أدخل العنوان بالتفصيل");
+    if(!phone || phone.length < 8) return alert("الرجاء أدخل رقم هاتف صحيح للتأكيد");
+    
+    const orderDetails = cart.map(i => i.name).join('، ');
+    const total = cart.reduce((sum, i) => sum + i.price, 0);
+    
+    const message = `طلب جديد FadFood (تأكيد عبر التطبيق):\n- الطلبات: ${orderDetails}\n- العنوان: ${address}\n- الهاتف: ${phone}\n- الإجمالي: ${total.toFixed(3)} DT`;
+    
+    window.open(`https://wa.me/21655073503?text=${encodeURIComponent(message)}`);
+}
+
+renderMenu();
+</script>
 </body>
 </html>
